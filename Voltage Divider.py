@@ -4,61 +4,40 @@ from Passives import Resistors, Capacitors
 
 
 
-def metric_prefix_frequency(frequency):
-    if frequency < 1.0e3:
-        frequency = str(round(frequency, 1)) + "Hz"
-    elif frequency < 1.0e6:
-        frequency = str(round(frequency / 1.0e3, 1)) + "kHz"
-    elif frequency < 1.0e9:
-        frequency = str(round(frequency / 1.0e6, 1)) + "MHz"
-    elif frequency < 1.0e12:
-        frequency = str(round(frequency / 1.0e9, 1)) + "GHz"
-    elif frequency < 1.0e15:
-        frequency = str(round(frequency / 1.0e12, 1)) + "THz"
+def metric_prefix(value):
+    if value < 1.0e-9:
+        value = str(round(value * 1.0e12, 2)) + "p"
+    elif value < 1.0e-6:
+        value = str(round(value * 1.0e9, 2)) + "n"
+    elif value < 1.0e-3:
+        value = str(round(value * 1.0e6, 2)) + "µ"
+    elif value < 1.0e0:
+        value = str(round(value * 1.0e3, 2)) + "m"
+    elif value < 1.0e3:
+        value = str(round(value, 1))
+    elif value < 1.0e6:
+        value = str(round(value / 1.0e3, 2)) + "k"
+    elif value < 1.0e9:
+        value = str(round(value / 1.0e6, 2)) + "M"
+    elif value < 1.0e12:
+        value = str(round(value / 1.0e9, 2)) + "G"
+    elif value < 1.0e15:
+        value = str(round(value / 1.0e12, 2)) + "T"
     else:
-        frequency = "Greater than THz"
-    return frequency
+        value = "Greater than T"
+    return value
 
-def metric_prefix_resistance(resistance):
-    if resistance < 1.0e3:
-        resistance = str(round(resistance, 2)) + "Ω"
-    elif resistance < 1.0e6:
-        resistance = str(round(resistance / 1.0e3, 2)) + "kΩ"
-    elif resistance < 1.0e9:
-        resistance = str(round(resistance / 1.0e6, 2)) + "MΩ"
-    elif resistance < 1.0e12:
-        resistance = str(round(resistance / 1.0e9, 2)) + "GΩ"
-    elif resistance < 1.0e15:
-        resistance = str(round(resistance / 1.0e12, 2)) + "TΩ"
-    else:
-        resistance = "Greater than T"
-    return resistance
+def readable_frequency(frequency):
+    return metric_prefix(frequency) + "Hz"
 
-def metric_prefix_capacitance(capacitance):
-    if capacitance < 1.0e-9:
-        capacitance = str(round(capacitance * 1.0e12, 2)) + "pF"
-    elif capacitance < 1.0e-6:
-        capacitance = str(round(capacitance * 1.0e9, 2)) + "nF"
-    elif capacitance < 1.0e-3:
-        capacitance = str(round(capacitance * 1.0e6, 2)) + "µF"
-    elif capacitance < 1.0:
-        capacitance = str(round(capacitance * 1.0e3, 2)) + "mF"
-    else:
-        capacitance = "Greater than F"
-    return capacitance
+def readable_resistance(resistance):
+    return metric_prefix(resistance) + "Ω"
 
-def metric_prefix_inductance(inductance):
-    if inductance < 1.0e-12:
-        inductance = str(round(inductance * 1.0e12, 2)) + "pH"
-    elif inductance < 1.0e-9:
-        inductance = str(round(inductance * 1.0e9, 2)) + "nH"
-    elif inductance < 1.0e-6:
-        inductance = str(round(inductance * 1.0e6, 2)) + "µH"
-    elif inductance < 1.0e-3:
-        inductance = str(round(inductance * 1.0e3, 2)) + "mH"
-    else:
-        inductance = "Greater than H"
-    return inductance
+def readable_capacitance(capacitance):
+    return metric_prefix(capacitance) + "F"
+
+def readable_inductance(inductance):
+    return metric_prefix(inductance) + "H"
 
 resistors = Resistors("Custom Resistors")
 # resistors.expand_series()
@@ -89,14 +68,14 @@ for rt in resistors.values:
                 if ((rt + rb >= minSeriesResistance) and (rt + rb <= maxSeriesResistance) and
                     (rt <= maxRt and rb <= maxRb) and
                     ((accuracy >= 0 and acceptAbove == True) or (accuracy <= 0 and acceptBelow == True))):
-                        allPairs.append({"Rt":{"Raw":rt, "Human Readable":metric_prefix_resistance(rt)},
-                                         "Rb":{"Raw":rb, "Human Readable":metric_prefix_resistance(rb)},
-                                         "Cb":{"Raw":cb, "Human Readable":metric_prefix_capacitance(cb)},
+                        allPairs.append({"Rt":{"Raw":rt, "Human Readable":readable_resistance(rt)},
+                                         "Rb":{"Raw":rb, "Human Readable":readable_resistance(rb)},
+                                         "Cb":{"Raw":cb, "Human Readable":readable_capacitance(cb)},
                                         #  "Accuracy":{"Raw":accuracy, "Human Readible":str(round(accuracy, 2))+"%"},
                                          "Accuracy":accuracy,
-                                         "-3dB Frequency":{"Raw":frequency, "Human Readable":metric_prefix_frequency(frequency)}}),
+                                         "-3dB Frequency":{"Raw":frequency, "Human Readable":readable_frequency(frequency)}}),
                         if vout > vTarget*(1-tolerance) and vout < vTarget*(1+tolerance):
-                            print(f"Rt = {metric_prefix_resistance(rt)}\tRb = {metric_prefix_resistance(rb)}\tCb = {metric_prefix_capacitance(cb)}\tAccuracy = {str(round(accuracy, 3))+'%'}\t-3dB Frequency = {metric_prefix_frequency(frequency)}")
+                            print(f"Rt = {readable_resistance(rt)}\tRb = {readable_resistance(rb)}\tCb = {readable_capacitance(cb)}\tAccuracy = {str(round(accuracy, 3))+'%'}\t-3dB Frequency = {readable_frequency(frequency)}")
 
 allPairs.sort(key=operator.itemgetter("Accuracy"))
 mostAccurate = 1000
