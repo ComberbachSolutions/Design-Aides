@@ -4,6 +4,7 @@ from Passives import Resistors
 
 
 resistors = Resistors("Custom")
+resistors = Resistors("Custom Resistors")
 # resistors.expand_series()
 
 tolerance = 10

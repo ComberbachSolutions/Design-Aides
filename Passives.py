@@ -19,8 +19,11 @@ class Passive():
             case "E192":
                 with open('E Series\E192.txt', 'r') as file:
                     self.values = file.read().split("\n")
-            case "Custom":
+            case "Custom Resistors":
                 with open('Custom Resistors.txt', 'r') as file:
+                    self.values = file.read().split("\n")
+            case "Custom Capacitors":
+                with open('Custom Capacitors.txt', 'r') as file:
                     self.values = file.read().split("\n")
         
         self.values = self.string_list_to_floats(self.values)
@@ -46,3 +49,34 @@ class Resistors(Passive):
         self.values.extend([999999999.0])
         self.values.sort()
 
+class Capacitors(Passive):
+    def expand_series(self):
+        for value in self.values[::-1]:
+            self.values.extend([value/100000000000000.0])
+            self.values.extend([value/10000000000000.0])
+            self.values.extend([value/1000000000000.0])
+            self.values.extend([value/100000000000.0])
+            self.values.extend([value/10000000000.0])
+            self.values.extend([value/1000000000.0])
+            self.values.extend([value/100000000.0])
+            self.values.extend([value/10000000.0])
+            self.values.extend([value/1000000.0])
+            self.values.remove(value)
+        self.values.extend([0.001])
+        self.values.sort()
+
+class Inductors(Passive):
+    def expand_series(self):
+        for value in self.values[::-1]:
+            self.values.extend([value/100000000000000.0])
+            self.values.extend([value/10000000000000.0])
+            self.values.extend([value/1000000000000.0])
+            self.values.extend([value/100000000000.0])
+            self.values.extend([value/10000000000.0])
+            self.values.extend([value/1000000000.0])
+            self.values.extend([value/100000000.0])
+            self.values.extend([value/10000000.0])
+            self.values.extend([value/1000000.0])
+            self.values.remove(value)
+        self.values.extend([0.001])
+        self.values.sort()
