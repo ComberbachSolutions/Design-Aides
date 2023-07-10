@@ -57,6 +57,7 @@ maxRb = 999999999
 
 tolerance /= 100
 allPairs = []
+validPairs = []
 for rt in resistors.values:
     for rb in resistors.values:
         for cb in capacitors.values:
@@ -73,9 +74,18 @@ for rt in resistors.values:
                                          "Cb":{"Raw":cb, "Human Readable":readable_capacitance(cb)},
                                         #  "Accuracy":{"Raw":accuracy, "Human Readible":str(round(accuracy, 2))+"%"},
                                          "Accuracy":accuracy,
-                                         "-3dB Frequency":{"Raw":frequency, "Human Readable":readable_frequency(frequency)}}),
+                                         "-3dB Frequency":{"Raw":frequency, "Human Readable":readable_frequency(frequency)}})
                         if vout > vTarget*(1-tolerance) and vout < vTarget*(1+tolerance):
-                            print(f"Rt = {readable_resistance(rt)}\tRb = {readable_resistance(rb)}\tCb = {readable_capacitance(cb)}\tAccuracy = {str(round(accuracy, 3))+'%'}\t-3dB Frequency = {readable_frequency(frequency)}")
+                            validPairs.append({"Rt":{"Raw":rt, "Human Readable":readable_resistance(rt)},
+                                            "Rb":{"Raw":rb, "Human Readable":readable_resistance(rb)},
+                                            "Cb":{"Raw":cb, "Human Readable":readable_capacitance(cb)},
+                                            #  "Accuracy":{"Raw":accuracy, "Human Readible":str(round(accuracy, 2))+"%"},
+                                            "Accuracy":accuracy,
+                                            "-3dB Frequency":{"Raw":frequency, "Human Readable":readable_frequency(frequency)}})
+
+validPairs.sort(key=operator.itemgetter("Accuracy"))
+for sample in validPairs:
+    print(f"Rt = {sample['Rt']['Human Readable']}\tRb = {sample['Rb']['Human Readable']}\tCb = {sample['Cb']['Human Readable']}\tAccuracy = {sample['Accuracy']:6.3f}%\t-3dB Frequency = {sample['-3dB Frequency']['Human Readable']}")
 
 allPairs.sort(key=operator.itemgetter("Accuracy"))
 mostAccurate = 1000
@@ -86,4 +96,4 @@ for sample in allPairs:
         mostAccurate = abs(sample["Accuracy"])
 
 print(f"{'*'*10} Most Accurate {'*'*10}")
-print(f"Rt = {winningPair['Rt']['Human Readable']}\tRb = {winningPair['Rb']['Human Readable']}\tCb = {winningPair['Cb']['Human Readable']}\tAccuracy = {str(round(winningPair['Accuracy'], 3))+'%'}\t-3dB Frequency = {winningPair['-3dB Frequency']['Human Readable']}")
+print(f"Rt = {winningPair['Rt']['Human Readable']}\tRb = {winningPair['Rb']['Human Readable']}\tCb = {winningPair['Cb']['Human Readable']}\tAccuracy = {winningPair['Accuracy']:6.3f}%\t-3dB Frequency = {winningPair['-3dB Frequency']['Human Readable']}")
