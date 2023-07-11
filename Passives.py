@@ -25,6 +25,9 @@ class Passive():
             case "Custom Capacitors":
                 with open('Custom Capacitors.txt', 'r') as file:
                     self.values = file.read().split("\n")
+            case "Custom Inductors":
+                with open('Custom Inductors.txt', 'r') as file:
+                    self.values = file.read().split("\n")
         
         self.values = self.string_list_to_floats(self.values)
 
@@ -38,6 +41,11 @@ class Passive():
         return seriesList1
 
 class Resistors(Passive):
+    def __init__(self, series):
+        Passive.__init__(self, series)
+        if series != "Custom Resistors":
+            self.expand_series()
+
     def expand_series(self):
         for value in self.values[::-1]:
             self.values.extend([value/100.0])
@@ -50,6 +58,11 @@ class Resistors(Passive):
         self.values.sort()
 
 class Capacitors(Passive):
+    def __init__(self, series):
+        Passive.__init__(self, series)
+        if series != "Custom Capacitors":
+            self.expand_series()
+
     def expand_series(self):
         for value in self.values[::-1]:
             self.values.extend([value/100000000000000.0])
@@ -66,6 +79,11 @@ class Capacitors(Passive):
         self.values.sort()
 
 class Inductors(Passive):
+    def __init__(self, series):
+        Passive.__init__(self, series)
+        if series != "Custom Inductors":
+            self.expand_series()
+
     def expand_series(self):
         for value in self.values[::-1]:
             self.values.extend([value/100000000000000.0])

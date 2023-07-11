@@ -8,14 +8,11 @@ from Passives import readable_capacitance
 
 
 resistors = Resistors("Custom Resistors")
-# resistors.expand_series()
-
 capacitors = Capacitors("Custom Capacitors")
-# capacitors.expand_series()
 
-tolerance = 10
+tolerance = 1
 vIn = 1
-vTarget = 0.2021
+vTarget = 0.6
 acceptAbove = True
 acceptBelow = True
 minSeriesResistance = 0
