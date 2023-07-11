@@ -80,3 +80,38 @@ class Inductors(Passive):
             self.values.remove(value)
         self.values.extend([0.001])
         self.values.sort()
+
+def metric_prefix(value):
+    if value < 1.0e-9:
+        value = str(round(value * 1.0e12, 2)) + "p"
+    elif value < 1.0e-6:
+        value = str(round(value * 1.0e9, 2)) + "n"
+    elif value < 1.0e-3:
+        value = str(round(value * 1.0e6, 2)) + "µ"
+    elif value < 1.0e0:
+        value = str(round(value * 1.0e3, 2)) + "m"
+    elif value < 1.0e3:
+        value = str(round(value, 1))
+    elif value < 1.0e6:
+        value = str(round(value / 1.0e3, 2)) + "k"
+    elif value < 1.0e9:
+        value = str(round(value / 1.0e6, 2)) + "M"
+    elif value < 1.0e12:
+        value = str(round(value / 1.0e9, 2)) + "G"
+    elif value < 1.0e15:
+        value = str(round(value / 1.0e12, 2)) + "T"
+    else:
+        value = "Greater than T"
+    return value
+
+def readable_frequency(frequency):
+    return metric_prefix(frequency) + "Hz"
+
+def readable_resistance(resistance):
+    return metric_prefix(resistance) + "Ω"
+
+def readable_capacitance(capacitance):
+    return metric_prefix(capacitance) + "F"
+
+def readable_inductance(inductance):
+    return metric_prefix(inductance) + "H"
