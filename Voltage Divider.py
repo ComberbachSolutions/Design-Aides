@@ -7,9 +7,6 @@ from Passives import readable_capacitance
 
 
 
-resistors = Resistors("Custom Resistors")
-capacitors = Capacitors("Custom Capacitors")
-
 tolerance = 1
 vIn = 1
 vTarget = 0.6
@@ -23,9 +20,9 @@ maxRb = 999999999
 tolerance /= 100
 allPairs = []
 validPairs = []
-for rt in resistors.values:
-    for rb in resistors.values:
-        for cb in capacitors.values:
+for rt in Resistors("Custom Resistors").values:
+    for rb in Resistors("Custom Resistors").values:
+        for cb in Capacitors("Custom Capacitors").values:
             if rb != 0 and rt != 0 and cb != 0:
                 vout = vIn / (1 + rt / rb)
                 accuracy = (vout / vTarget - 1) * 100
