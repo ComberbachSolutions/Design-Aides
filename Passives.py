@@ -48,11 +48,11 @@ class Resistors(Passive):
 
     def expand_series(self):
         for value in self.values[::-1]:
-            self.values.extend([value/100.0])
-            self.values.extend([value/10.0])
-            self.values.extend([value*10.0])
-            self.values.extend([value*100.0])
-            self.values.extend([value*1000.0])
+            self.values.extend([value/100.0,
+                                value/10.0,
+                                value*10.0,
+                                value*100.0,
+                                value*1000.0])
         self.values.extend([1000000.0])
         self.values.extend([999999999.0])
         self.values.sort()
@@ -65,15 +65,15 @@ class Capacitors(Passive):
 
     def expand_series(self):
         for value in self.values[::-1]:
-            self.values.extend([value/100000000000000.0])
-            self.values.extend([value/10000000000000.0])
-            self.values.extend([value/1000000000000.0])
-            self.values.extend([value/100000000000.0])
-            self.values.extend([value/10000000000.0])
-            self.values.extend([value/1000000000.0])
-            self.values.extend([value/100000000.0])
-            self.values.extend([value/10000000.0])
-            self.values.extend([value/1000000.0])
+            self.values.extend([value/100000000000000.0,
+                                value/10000000000000.0,
+                                value/1000000000000.0,
+                                value/100000000000.0,
+                                value/10000000000.0,
+                                value/1000000000.0,
+                                value/100000000.0,
+                                value/10000000.0,
+                                value/1000000.0])
             self.values.remove(value)
         self.values.extend([0.001])
         self.values.sort()
@@ -86,15 +86,15 @@ class Inductors(Passive):
 
     def expand_series(self):
         for value in self.values[::-1]:
-            self.values.extend([value/100000000000000.0])
-            self.values.extend([value/10000000000000.0])
-            self.values.extend([value/1000000000000.0])
-            self.values.extend([value/100000000000.0])
-            self.values.extend([value/10000000000.0])
-            self.values.extend([value/1000000000.0])
-            self.values.extend([value/100000000.0])
-            self.values.extend([value/10000000.0])
-            self.values.extend([value/1000000.0])
+            self.values.extend([value/100000000000000.0,
+                                value/10000000000000.0,
+                                value/1000000000000.0,
+                                value/100000000000.0,
+                                value/10000000000.0,
+                                value/1000000000.0,
+                                value/100000000.0,
+                                value/10000000.0,
+                                value/1000000.0])
             self.values.remove(value)
         self.values.extend([0.001])
         self.values.sort()
