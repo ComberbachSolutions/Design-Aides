@@ -10,6 +10,9 @@ from Passives import readable_capacitance
 
 
 def voltage_divider():
+    Rtop = Resistors("Custom Resistors").values
+    Rbot = Resistors("Custom Resistors").values
+    Cbot = Capacitors("Custom Capacitors").values
     tolerance = 1
     vIn = 1
     vTarget = 0.6
@@ -23,9 +26,9 @@ def voltage_divider():
     tolerance /= 100
     allPairs = []
     validPairs = []
-    for rt in Resistors("Custom Resistors").values:
-        for rb in Resistors("Custom Resistors").values:
-            for cb in Capacitors("Custom Capacitors").values:
+    for rt in Rtop:
+        for rb in Rbot:
+            for cb in Cbot:
                 if rb != 0 and rt != 0 and cb != 0:
                     vout = vIn / (1 + rt / rb)
                     accuracy = (vout / vTarget - 1) * 100
@@ -68,3 +71,5 @@ def voltage_divider():
 # ps = pstats.Stats(profile)
 # ps.sort_stats('tottime')
 # ps.print_stats()
+
+voltage_divider()
