@@ -27,29 +27,35 @@ def voltage_divider():
     allPairs = []
     validPairs = []
     for rt in Rtop:
+        if rt == 0:
+            continue
         for rb in Rbot:
+            if rb == 0:
+                continue
             for cb in Cbot:
-                if rb != 0 and rt != 0 and cb != 0:
-                    vout = vIn / (1 + rt / rb)
-                    accuracy = (vout / vTarget - 1) * 100
-                    frequency = (1 + rb / rt) / (2 * math.pi * cb * rb)
-                        
-                    if ((rt + rb >= minSeriesResistance) and (rt + rb <= maxSeriesResistance) and
-                        (rt <= maxRt and rb <= maxRb) and
-                        ((accuracy >= 0 and acceptAbove == True) or (accuracy <= 0 and acceptBelow == True))):
-                            allPairs.append({"Rt":{"Raw":rt, "Human Readable":readable_resistance(rt)},
+                if cb == 0:
+                    continue
+
+                vout = vIn / (1 + rt / rb)
+                accuracy = (vout / vTarget - 1) * 100
+                frequency = (1 + rb / rt) / (2 * math.pi * cb * rb)
+                    
+                if ((rt + rb >= minSeriesResistance) and (rt + rb <= maxSeriesResistance) and
+                    (rt <= maxRt and rb <= maxRb) and
+                    ((accuracy >= 0 and acceptAbove == True) or (accuracy <= 0 and acceptBelow == True))):
+                        allPairs.append({"Rt":{"Raw":rt, "Human Readable":readable_resistance(rt)},
+                                        "Rb":{"Raw":rb, "Human Readable":readable_resistance(rb)},
+                                        "Cb":{"Raw":cb, "Human Readable":readable_capacitance(cb)},
+                                        #  "Accuracy":{"Raw":accuracy, "Human Readible":str(round(accuracy, 2))+"%"},
+                                        "Accuracy":accuracy,
+                                        "-3dB Frequency":{"Raw":frequency, "Human Readable":readable_frequency(frequency)}})
+                        if vout > vTarget*(1-tolerance) and vout < vTarget*(1+tolerance):
+                            validPairs.append({"Rt":{"Raw":rt, "Human Readable":readable_resistance(rt)},
                                             "Rb":{"Raw":rb, "Human Readable":readable_resistance(rb)},
                                             "Cb":{"Raw":cb, "Human Readable":readable_capacitance(cb)},
                                             #  "Accuracy":{"Raw":accuracy, "Human Readible":str(round(accuracy, 2))+"%"},
                                             "Accuracy":accuracy,
                                             "-3dB Frequency":{"Raw":frequency, "Human Readable":readable_frequency(frequency)}})
-                            if vout > vTarget*(1-tolerance) and vout < vTarget*(1+tolerance):
-                                validPairs.append({"Rt":{"Raw":rt, "Human Readable":readable_resistance(rt)},
-                                                "Rb":{"Raw":rb, "Human Readable":readable_resistance(rb)},
-                                                "Cb":{"Raw":cb, "Human Readable":readable_capacitance(cb)},
-                                                #  "Accuracy":{"Raw":accuracy, "Human Readible":str(round(accuracy, 2))+"%"},
-                                                "Accuracy":accuracy,
-                                                "-3dB Frequency":{"Raw":frequency, "Human Readable":readable_frequency(frequency)}})
 
     validPairs.sort(key=operator.itemgetter("Accuracy"))
     for sample in validPairs:
