@@ -2,22 +2,22 @@ class Passive():
     def __init__(self, series):
         match series:
             case "E6":
-                with open('E Series\E6.txt', 'r') as file:
+                with open('E Series/E6.txt', 'r') as file:
                     self.values = file.read().split("\n")
             case "E12":
-                with open('E Series\E12.txt', 'r') as file:
+                with open('E Series/E12.txt', 'r') as file:
                     self.values = file.read().split("\n")
             case "E24":
-                with open('E Series\E24.txt', 'r') as file:
+                with open('E Series/E24.txt', 'r') as file:
                     self.values = file.read().split("\n")
             case "E48":
-                with open('E Series\E48.txt', 'r') as file:
+                with open('E Series/E48.txt', 'r') as file:
                     self.values = file.read().split("\n")
             case "E96":
-                with open('E Series\E96.txt', 'r') as file:
+                with open('E Series/E96.txt', 'r') as file:
                     self.values = file.read().split("\n")
             case "E192":
-                with open('E Series\E192.txt', 'r') as file:
+                with open('E Series/E192.txt', 'r') as file:
                     self.values = file.read().split("\n")
             case "Custom Resistors":
                 with open('Custom Resistors.txt', 'r') as file:
@@ -100,24 +100,26 @@ class Inductors(Passive):
         self.values.sort()
 
 def metric_prefix(value):
-    if value < 1.0e-9:
-        value = str(round(value * 1.0e12, 2)) + "p"
+    if value < 1.0e-12:
+        value = "Less than p"
+    elif value < 1.0e-9:
+        value = f"{value * 1.0e12:>5.1f}p"
     elif value < 1.0e-6:
-        value = str(round(value * 1.0e9, 2)) + "n"
+        value = f"{value * 1.0e9:>5.1f}n"
     elif value < 1.0e-3:
-        value = str(round(value * 1.0e6, 2)) + "µ"
+        value = f"{value * 1.0e6:>5.1f}µ"
     elif value < 1.0e0:
-        value = str(round(value * 1.0e3, 2)) + "m"
+        value = f"{value * 1.0e3:>5.1f}m"
     elif value < 1.0e3:
-        value = str(round(value, 1))
+        value = f" {value:>5.1f}"
     elif value < 1.0e6:
-        value = str(round(value / 1.0e3, 2)) + "k"
+        value = f"{value / 1.0e3:>5.1f}k"
     elif value < 1.0e9:
-        value = str(round(value / 1.0e6, 2)) + "M"
+        value = f"{value / 1.0e6:>5.1f}M"
     elif value < 1.0e12:
-        value = str(round(value / 1.0e9, 2)) + "G"
+        value = f"{value / 1.0e9:>5.1f}G"
     elif value < 1.0e15:
-        value = str(round(value / 1.0e12, 2)) + "T"
+        value = f"{value / 1.0e12:>5.1f}T"
     else:
         value = "Greater than T"
     return value

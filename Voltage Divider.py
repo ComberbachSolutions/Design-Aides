@@ -1,5 +1,6 @@
-import cProfile
-import pstats
+# import cProfile
+# import pstats
+# import scalene
 import operator
 import math
 from Passives import Resistors, Capacitors
@@ -13,7 +14,7 @@ def voltage_divider():
     Rtop = Resistors("Custom Resistors").values
     Rbot = Resistors("Custom Resistors").values
     Cbot = Capacitors("Custom Capacitors").values
-    tolerance = 1
+    tolerancePercent = 1
     vIn = 1
     vTarget = 0.6
     acceptAbove = True
@@ -23,7 +24,7 @@ def voltage_divider():
     maxRt = 999999999
     maxRb = 999999999
 
-    tolerance /= 100
+    tolerancePercent /= 100
     allPairs = []
     validPairs = []
     for rt in Rtop:
@@ -49,7 +50,7 @@ def voltage_divider():
                                         #  "Accuracy":{"Raw":accuracy, "Human Readible":str(round(accuracy, 2))+"%"},
                                         "Accuracy":accuracy,
                                         "-3dB Frequency":{"Raw":frequency, "Human Readable":readable_frequency(frequency)}})
-                        if vout > vTarget*(1-tolerance) and vout < vTarget*(1+tolerance):
+                        if vout > vTarget*(1-tolerancePercent) and vout < vTarget*(1+tolerancePercent):
                             validPairs.append({"Rt":{"Raw":rt, "Human Readable":readable_resistance(rt)},
                                             "Rb":{"Raw":rb, "Human Readable":readable_resistance(rb)},
                                             "Cb":{"Raw":cb, "Human Readable":readable_capacitance(cb)},
@@ -59,7 +60,7 @@ def voltage_divider():
 
     validPairs.sort(key=operator.itemgetter("Accuracy"))
     for sample in validPairs:
-        print(f"Rt = {sample['Rt']['Human Readable']}\tRb = {sample['Rb']['Human Readable']}\tCb = {sample['Cb']['Human Readable']}\tAccuracy = {sample['Accuracy']:6.3f}%\t-3dB Frequency = {sample['-3dB Frequency']['Human Readable']}")
+        print(f"Rt = {sample['Rt']['Human Readable']}\tRb = {sample['Rb']['Human Readable']}\tCb = {sample['Cb']['Human Readable']}\tAccuracy = {sample['Accuracy']:6.3f}%\t-3dB Frequency = {sample['-3dB Frequency']['Human Readable']}\tVout at Vin({vIn}V) = {vIn/(1+sample['Rt']['Raw']/sample['Rb']['Raw']):>.3f}V")
 
     allPairs.sort(key=operator.itemgetter("Accuracy"))
     mostAccurate = 1000
@@ -70,7 +71,7 @@ def voltage_divider():
             mostAccurate = abs(sample["Accuracy"])
 
     print(f"{'*'*10} Most Accurate {'*'*10}")
-    print(f"Rt = {winningPair['Rt']['Human Readable']}\tRb = {winningPair['Rb']['Human Readable']}\tCb = {winningPair['Cb']['Human Readable']}\tAccuracy = {winningPair['Accuracy']:6.3f}%\t-3dB Frequency = {winningPair['-3dB Frequency']['Human Readable']}")
+    print(f"Rt = {winningPair['Rt']['Human Readable']}\tRb = {winningPair['Rb']['Human Readable']}\tCb = {winningPair['Cb']['Human Readable']}\tAccuracy = {winningPair['Accuracy']:6.3f}%\t-3dB Frequency = {winningPair['-3dB Frequency']['Human Readable']}\tVout at Vin({vIn}V) = {vIn/(1+winningPair['Rt']['Raw']/winningPair['Rb']['Raw']):>.3f}V")
 
 # profile = cProfile.Profile()
 # profile.run('voltage_divider()')
@@ -78,4 +79,5 @@ def voltage_divider():
 # ps.sort_stats('tottime')
 # ps.print_stats()
 
+# scalene "voltage divider.py"
 voltage_divider()
