@@ -98,23 +98,23 @@ def metric_prefix(value):
     if value < 1.0e-12:
         value = "Less than p"
     elif value < 1.0e-9:
-        value = f"{value * 1.0e12:>5.1f}p"
+        value = f"{value * 1.0e12:>5.4g}p"
     elif value < 1.0e-6:
-        value = f"{value * 1.0e9:>5.1f}n"
+        value = f"{value * 1.0e9:>5.4g}n"
     elif value < 1.0e-3:
-        value = f"{value * 1.0e6:>5.1f}µ"
+        value = f"{value * 1.0e6:>5.4g}µ"
     elif value < 1.0e0:
-        value = f"{value * 1.0e3:>5.1f}m"
+        value = f"{value * 1.0e3:>5.4g}m"
     elif value < 1.0e3:
-        value = f" {value:>5.1f}"
+        value = f" {value:>5.4g}"
     elif value < 1.0e6:
-        value = f"{value / 1.0e3:>5.1f}k"
+        value = f"{value / 1.0e3:>5.4g}k"
     elif value < 1.0e9:
-        value = f"{value / 1.0e6:>5.1f}M"
+        value = f"{value / 1.0e6:>5.4g}M"
     elif value < 1.0e12:
-        value = f"{value / 1.0e9:>5.1f}G"
+        value = f"{value / 1.0e9:>5.4g}G"
     elif value < 1.0e15:
-        value = f"{value / 1.0e12:>5.1f}T"
+        value = f"{value / 1.0e12:>5.4g}T"
     else:
         value = "Greater than T"
     return value
