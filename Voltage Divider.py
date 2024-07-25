@@ -13,10 +13,10 @@ from Passives import readable_capacitance
 def voltage_divider():
     Rtop = Resistors("Custom Resistors").values
     Rbot = Resistors("Custom Resistors").values
-    Cbot = Capacitors("Custom Capacitors").values
     tolerancePercent = 1
     vIn = 1
     vTarget = 0.6
+    Cbot = Capacitors("100nF Capacitor").values
     acceptAbove = True
     acceptBelow = True
     minSeriesResistance = 0
