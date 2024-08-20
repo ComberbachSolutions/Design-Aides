@@ -11,18 +11,18 @@ from Passives import readable_capacitance
 
 
 def voltage_divider():
-    Rtop = Resistors("Custom Resistors").values
-    Rbot = Resistors("Custom Resistors").values
-    tolerancePercent = 1
-    vIn = 1
-    vTarget = 0.6
+    Rtop = Resistors("E All").values
+    Rbot = Resistors("E All").values
     Cbot = Capacitors("100nF Capacitor").values
-    acceptAbove = True
+    tolerancePercent = 1
+    vIn = 5.1
+    vTarget = 0.8
+    acceptAbove = False
     acceptBelow = True
-    minSeriesResistance = 0
+    minSeriesResistance = 5000
     maxSeriesResistance = 999999999
     maxRt = 999999999
-    maxRb = 999999999
+    maxRb = 10000
 
     tolerancePercent /= 100
     allPairs = []
@@ -40,7 +40,7 @@ def voltage_divider():
                 vout = vIn / (1 + rt / rb)
                 accuracy = (vout / vTarget - 1) * 100
                 frequency = (1 + rb / rt) / (2 * math.pi * cb * rb)
-                    
+
                 if ((rt + rb >= minSeriesResistance) and (rt + rb <= maxSeriesResistance) and
                     (rt <= maxRt and rb <= maxRb) and
                     ((accuracy >= 0 and acceptAbove == True) or (accuracy <= 0 and acceptBelow == True))):

@@ -19,6 +19,9 @@ class Passive():
             case "E192":
                 with open('E Series/E192.txt', 'r') as file:
                     self.values = file.read().split("\n")
+            case "E All":
+                with open('E Series/E All.txt', 'r') as file:
+                    self.values = file.read().split("\n")
             case _:
                 with open(f'{series}.txt', 'r') as file:
                     self.values = file.read().split("\n")
@@ -37,7 +40,7 @@ class Passive():
 class Resistors(Passive):
     def __init__(self, series):
         Passive.__init__(self, series)
-        if series != "Custom Resistors":
+        if series in ["E6","E12","E24","E48","E96","E192","E All"]:
             self.expand_series()
 
     def expand_series(self):
