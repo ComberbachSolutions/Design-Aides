@@ -1,0 +1,613 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?application progid="SMath Studio Desktop" version="0.99.7610.506"?>
+<worksheet xmlns="http://smath.info/schemas/worksheet/1.0">
+  <settings ppi="96">
+    <identity>
+      <id>86ec6537-1e14-48a5-b73e-8ad17d4b01f6</id>
+      <revision>5</revision>
+    </identity>
+    <calculation>
+      <precision>3</precision>
+      <exponentialThreshold>5</exponentialThreshold>
+      <trailingZeros>false</trailingZeros>
+      <significantDigitsMode>false</significantDigitsMode>
+      <roundingMode>0</roundingMode>
+      <fractions>decimal</fractions>
+    </calculation>
+    <pageModel active="false" viewMode="2" printGrid="false" printAreas="true" simpleEqualsOnly="false" printBackgroundImages="true">
+      <paper id="1" orientation="Portrait" width="850" height="1100" />
+      <margins left="39" right="39" top="49" bottom="49" />
+      <header alignment="Center" color="#a9a9a9">&amp;[DATE] &amp;[TIME] - &amp;[FILENAME]</header>
+      <footer alignment="Center" color="#a9a9a9">&amp;[PAGENUM] / &amp;[COUNT]</footer>
+      <backgrounds />
+    </pageModel>
+    <dependencies>
+      <assembly name="SMath Studio Desktop" version="0.99.7610.506" guid="a37cba83-b69c-4c71-9992-55ff666763bd" />
+      <assembly name="Math Region" version="0.99.7610.506" guid="02f1ab51-215b-466e-a74d-5d8b1cf85e8d" />
+      <assembly name="TextRegion" version="1.11.7610.506" guid="485d28c5-349a-48b6-93be-12a35a1c1e39" />
+    </dependencies>
+  </settings>
+  <regions type="content">
+    <region left="0" top="0" width="151" height="24" color="#000000" fontSize="10">
+      <text lang="eng">
+        <p>Defined Variables</p>
+      </text>
+    </region>
+    <region top="18" color="#000000">
+      <area collapsed="true">
+        <title lang="eng">
+          <p fontName="Arial"></p>
+        </title>
+      </area>
+      <region left="0" top="36" width="175" height="24" color="#000000" fontSize="10">
+        <text lang="eng">
+          <p>Operating Parameters</p>
+        </text>
+      </region>
+      <region left="324" top="36" width="175" height="24" color="#000000" fontSize="10">
+        <text lang="eng">
+          <p>Non-Ideal Parameters</p>
+        </text>
+      </region>
+      <region left="0" top="54" width="90" height="24" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">F</e>
+            <e type="operand">100</e>
+            <e type="operand" style="unit">kHz</e>
+            <e type="operator" args="2">*</e>
+            <e type="operator" args="2">:</e>
+          </input>
+        </math>
+      </region>
+      <region left="324" top="54" width="97" height="30" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">R.L</e>
+            <e type="operand">1000</e>
+            <e type="operand" style="unit">mΩ</e>
+            <e type="operator" args="2">*</e>
+            <e type="operator" args="2">:</e>
+          </input>
+        </math>
+      </region>
+      <region left="0" top="72" width="66" height="24" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">R</e>
+            <e type="operand">15</e>
+            <e type="operand" style="unit">Ω</e>
+            <e type="operator" args="2">*</e>
+            <e type="operator" args="2">:</e>
+          </input>
+        </math>
+      </region>
+      <region left="324" top="81" width="89" height="30" color="#000000" fontSize="10">
+        <math>
+          <input>
+            <e type="operand">R.C</e>
+            <e type="operand">100</e>
+            <e type="operand" style="unit">mΩ</e>
+            <e type="operator" args="2">*</e>
+            <e type="operator" args="2">:</e>
+          </input>
+        </math>
+      </region>
+      <region left="0" top="90" width="73" height="30" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">V.i</e>
+            <e type="operand">12</e>
+            <e type="operand" style="unit">V</e>
+            <e type="operator" args="2">*</e>
+            <e type="operator" args="2">:</e>
+          </input>
+        </math>
+      </region>
+      <region left="0" top="117" width="58" height="24" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">V</e>
+            <e type="operand">5</e>
+            <e type="operand" style="unit">V</e>
+            <e type="operator" args="2">*</e>
+            <e type="operator" args="2">:</e>
+          </input>
+        </math>
+      </region>
+      <region left="0" top="135" width="82" height="24" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">ΔV</e>
+            <e type="operand">10</e>
+            <e type="operand" style="unit">mV</e>
+            <e type="operator" args="2">*</e>
+            <e type="operator" args="2">:</e>
+          </input>
+        </math>
+      </region>
+      <region left="0" top="153" width="135" height="41" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">I.L</e>
+            <e type="operand">V</e>
+            <e type="operand">R</e>
+            <e type="operator" args="2">/</e>
+            <e type="operator" args="2">:</e>
+          </input>
+          <result action="numeric">
+            <e type="operand">0.3333</e>
+            <e type="operand" style="unit">A</e>
+            <e type="operator" args="2">*</e>
+          </result>
+        </math>
+      </region>
+      <region left="180" top="162" width="137" height="30" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">I.o</e>
+            <e type="operand">I.L</e>
+            <e type="operator" args="2">:</e>
+          </input>
+          <result action="numeric">
+            <e type="operand">0.3333</e>
+            <e type="operand" style="unit">A</e>
+            <e type="operator" args="2">*</e>
+          </result>
+        </math>
+      </region>
+      <region left="0" top="189" width="159" height="30" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">ΔI.L</e>
+            <e type="operand">30</e>
+            <e type="operand" style="unit">%</e>
+            <e type="operator" args="2">*</e>
+            <e type="operand">I.L</e>
+            <e type="operator" args="2">*</e>
+            <e type="operator" args="2">:</e>
+          </input>
+          <result action="numeric">
+            <e type="operand">0.1</e>
+            <e type="operand" style="unit">A</e>
+            <e type="operator" args="2">*</e>
+          </result>
+        </math>
+      </region>
+      <region top="216" color="#000000">
+        <area terminator="true" />
+      </region>
+    </region>
+    <region left="0" top="225" width="95" height="24" color="#000000" fontSize="10">
+      <text lang="eng">
+        <p>Duty Cycle</p>
+      </text>
+    </region>
+    <region top="243" color="#000000">
+      <area collapsed="true">
+        <title lang="eng">
+          <p fontName="Arial"></p>
+        </title>
+      </area>
+      <region left="0" top="261" width="198" height="47" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">N.RL_Error.D</e>
+            <e type="operand">R.L</e>
+            <e type="operand">R</e>
+            <e type="operator" args="2">/</e>
+            <e type="operator" args="2">:</e>
+          </input>
+          <contract>
+            <e type="operand" style="unit">%</e>
+          </contract>
+          <result action="numeric">
+            <e type="operand">6.6667</e>
+          </result>
+        </math>
+      </region>
+      <region left="0" top="306" width="261" height="47" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">D</e>
+            <e type="operand">V</e>
+            <e type="operand">V.i</e>
+            <e type="operator" args="2">/</e>
+            <e type="operand">1</e>
+            <e type="operand">N.RL_Error.D</e>
+            <e type="operator" args="2">+</e>
+            <e type="bracket">(</e>
+            <e type="operator" args="2">*</e>
+            <e type="operator" args="2">:</e>
+          </input>
+          <contract>
+            <e type="operand" style="unit">%</e>
+          </contract>
+          <result action="numeric">
+            <e type="operand">44.4444</e>
+          </result>
+        </math>
+      </region>
+      <region top="351" color="#000000">
+        <area terminator="true" />
+      </region>
+    </region>
+    <region left="0" top="360" width="127" height="24" color="#000000" fontSize="10">
+      <text lang="eng">
+        <p>Output Voltage</p>
+      </text>
+    </region>
+    <region top="378" color="#000000">
+      <area collapsed="true">
+        <title lang="eng">
+          <p fontName="Arial"></p>
+        </title>
+      </area>
+      <region left="9" top="396" width="233" height="53" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">N.RL_Error.V</e>
+            <e type="operand">I.L</e>
+            <e type="operand">R.L</e>
+            <e type="operator" args="2">*</e>
+            <e type="operand">D</e>
+            <e type="operand">V.i</e>
+            <e type="operator" args="2">*</e>
+            <e type="operator" args="2">/</e>
+            <e type="operator" args="1">-</e>
+            <e type="operator" args="2">:</e>
+          </input>
+          <contract>
+            <e type="operand" style="unit">%</e>
+          </contract>
+          <result action="numeric">
+            <e type="operand">6.25</e>
+            <e type="operator" args="1">-</e>
+          </result>
+        </math>
+      </region>
+      <region left="0" top="450" width="229" height="32" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">V</e>
+            <e type="operand">D</e>
+            <e type="operand">V.i</e>
+            <e type="operator" args="2">*</e>
+            <e type="operand">1</e>
+            <e type="operand">N.RL_Error.V</e>
+            <e type="operator" args="2">+</e>
+            <e type="bracket">(</e>
+            <e type="operator" args="2">*</e>
+            <e type="operator" args="2">:</e>
+          </input>
+          <result action="numeric">
+            <e type="operand">5</e>
+            <e type="operand" style="unit">V</e>
+            <e type="operator" args="2">*</e>
+          </result>
+        </math>
+      </region>
+      <region top="477" color="#000000">
+        <area terminator="true" />
+      </region>
+    </region>
+    <region left="0" top="486" width="79" height="24" color="#000000" fontSize="10">
+      <text lang="eng">
+        <p>Inductor</p>
+      </text>
+    </region>
+    <region top="504" color="#000000">
+      <area collapsed="true">
+        <title lang="eng">
+          <p fontName="Arial"></p>
+        </title>
+      </area>
+      <region left="0" top="513" width="414" height="69" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">N.RL_Error.L</e>
+            <e type="operand">R</e>
+            <e type="operand">R.L</e>
+            <e type="operator" args="2">+</e>
+            <e type="bracket">(</e>
+            <e type="operand">R</e>
+            <e type="operand">V.i</e>
+            <e type="operand">V</e>
+            <e type="operator" args="2">-</e>
+            <e type="bracket">(</e>
+            <e type="operator" args="2">*</e>
+            <e type="operand">V</e>
+            <e type="operand">R.L</e>
+            <e type="operator" args="2">*</e>
+            <e type="operator" args="2">-</e>
+            <e type="bracket">(</e>
+            <e type="operator" args="2">*</e>
+            <e type="operand">R</e>
+            <e type="operand">2</e>
+            <e type="operator" args="2">^</e>
+            <e type="operand">V.i</e>
+            <e type="operand">V</e>
+            <e type="operator" args="2">-</e>
+            <e type="bracket">(</e>
+            <e type="operator" args="2">*</e>
+            <e type="operator" args="2">/</e>
+            <e type="operand">1</e>
+            <e type="operator" args="2">-</e>
+            <e type="bracket">(</e>
+            <e type="operator" args="2">:</e>
+          </input>
+          <contract>
+            <e type="operand" style="unit">%</e>
+          </contract>
+          <result action="numeric">
+            <e type="operand">1.5873</e>
+          </result>
+        </math>
+      </region>
+      <region left="0" top="585" width="335" height="72" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">L</e>
+            <e type="operand">V</e>
+            <e type="operand">1</e>
+            <e type="operand">V</e>
+            <e type="operand">V.i</e>
+            <e type="operator" args="2">/</e>
+            <e type="operator" args="2">-</e>
+            <e type="bracket">(</e>
+            <e type="operator" args="2">*</e>
+            <e type="operand">2</e>
+            <e type="operand">ΔI.L</e>
+            <e type="operator" args="2">*</e>
+            <e type="operand">F</e>
+            <e type="operator" args="2">*</e>
+            <e type="operator" args="2">/</e>
+            <e type="operand">1</e>
+            <e type="operand">N.RL_Error.L</e>
+            <e type="operator" args="2">+</e>
+            <e type="bracket">(</e>
+            <e type="operator" args="2">*</e>
+            <e type="operator" args="2">:</e>
+          </input>
+          <contract>
+            <e type="operand" style="unit">μH</e>
+          </contract>
+          <result action="numeric">
+            <e type="operand">148.1481</e>
+          </result>
+        </math>
+      </region>
+      <region top="648" color="#000000">
+        <area terminator="true" />
+      </region>
+    </region>
+    <region left="0" top="657" width="143" height="24" color="#000000" fontSize="10">
+      <text lang="eng">
+        <p>Output Capacitor</p>
+      </text>
+    </region>
+    <region top="675" color="#000000">
+      <area collapsed="true">
+        <title lang="eng">
+          <p fontName="Arial"></p>
+        </title>
+      </area>
+      <region left="0" top="684" width="146" height="30" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">N.RL_Error.C</e>
+            <e type="operand">0</e>
+            <e type="operator" args="2">:</e>
+          </input>
+          <contract>
+            <e type="operand" style="unit">%</e>
+          </contract>
+          <result action="numeric">
+            <e type="operand">0</e>
+          </result>
+        </math>
+      </region>
+      <region left="0" top="711" width="282" height="47" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">C</e>
+            <e type="operand">ΔI.L</e>
+            <e type="operand">8</e>
+            <e type="operand">F</e>
+            <e type="operator" args="2">*</e>
+            <e type="operand">ΔV</e>
+            <e type="operator" args="2">*</e>
+            <e type="operator" args="2">/</e>
+            <e type="operand">1</e>
+            <e type="operand">N.RL_Error.C</e>
+            <e type="operator" args="2">+</e>
+            <e type="bracket">(</e>
+            <e type="operator" args="2">*</e>
+            <e type="operator" args="2">:</e>
+          </input>
+          <contract>
+            <e type="operand" style="unit">μF</e>
+          </contract>
+          <result action="numeric">
+            <e type="operand">12.5</e>
+          </result>
+        </math>
+      </region>
+      <region top="756" color="#000000">
+        <area terminator="true" />
+      </region>
+    </region>
+    <region left="0" top="765" width="183" height="24" color="#000000" fontSize="10">
+      <text lang="eng">
+        <p>Average Input Current</p>
+      </text>
+    </region>
+    <region top="783" color="#000000">
+      <area collapsed="true">
+        <title lang="eng">
+          <p fontName="Arial"></p>
+        </title>
+      </area>
+      <region left="0" top="792" width="205" height="47" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">N.RL_Error.Ig</e>
+            <e type="operand">R.L</e>
+            <e type="operand">R</e>
+            <e type="operator" args="2">/</e>
+            <e type="operator" args="2">:</e>
+          </input>
+          <contract>
+            <e type="operand" style="unit">%</e>
+          </contract>
+          <result action="numeric">
+            <e type="operand">6.6667</e>
+          </result>
+        </math>
+      </region>
+      <region left="0" top="837" width="292" height="47" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">I.g</e>
+            <e type="operand">I.o</e>
+            <e type="operand">V</e>
+            <e type="operand">V.i</e>
+            <e type="operator" args="2">/</e>
+            <e type="operator" args="2">*</e>
+            <e type="operand">1</e>
+            <e type="operand">N.RL_Error.Ig</e>
+            <e type="operator" args="2">+</e>
+            <e type="bracket">(</e>
+            <e type="operator" args="2">*</e>
+            <e type="operator" args="2">:</e>
+          </input>
+          <result action="numeric">
+            <e type="operand">0.1481</e>
+            <e type="operand" style="unit">A</e>
+            <e type="operator" args="2">*</e>
+          </result>
+        </math>
+      </region>
+      <region top="882" color="#000000">
+        <area terminator="true" />
+      </region>
+    </region>
+    <region left="0" top="891" width="92" height="24" color="#000000" fontSize="10">
+      <math decimalPlaces="4">
+        <input>
+          <e type="operand">Efficiency</e>
+        </input>
+      </math>
+    </region>
+    <region top="909" color="#000000">
+      <area collapsed="false">
+        <title lang="eng">
+          <p fontName="Arial"></p>
+        </title>
+      </area>
+      <region left="0" top="918" width="203" height="64" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">Δη.RL</e>
+            <e type="operand">1</e>
+            <e type="operand">1</e>
+            <e type="operand">R.L</e>
+            <e type="operand">R</e>
+            <e type="operator" args="2">/</e>
+            <e type="operator" args="2">+</e>
+            <e type="operator" args="2">/</e>
+            <e type="operand">1</e>
+            <e type="operator" args="2">-</e>
+            <e type="operator" args="2">:</e>
+          </input>
+          <contract>
+            <e type="operand" style="unit">%</e>
+          </contract>
+          <result action="numeric">
+            <e type="operand">6.25</e>
+            <e type="operator" args="1">-</e>
+          </result>
+        </math>
+      </region>
+      <region left="279" top="918" width="340" height="90" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">Δη.RC</e>
+            <e type="operand">1</e>
+            <e type="operand">1</e>
+            <e type="operand">ΔI.L</e>
+            <e type="operand">2</e>
+            <e type="operator" args="2">^</e>
+            <e type="operand">R.C</e>
+            <e type="operator" args="2">*</e>
+            <e type="operand">R</e>
+            <e type="operand">3</e>
+            <e type="operator" args="2">^</e>
+            <e type="operator" args="2">*</e>
+            <e type="operand">4</e>
+            <e type="operand">D</e>
+            <e type="operand">2</e>
+            <e type="operator" args="2">^</e>
+            <e type="operator" args="2">*</e>
+            <e type="operand">V.i</e>
+            <e type="operand">2</e>
+            <e type="operator" args="2">^</e>
+            <e type="operator" args="2">*</e>
+            <e type="operand">R.C</e>
+            <e type="operand">R</e>
+            <e type="operator" args="2">+</e>
+            <e type="bracket">(</e>
+            <e type="operand">2</e>
+            <e type="operator" args="2">^</e>
+            <e type="operator" args="2">*</e>
+            <e type="operator" args="2">/</e>
+            <e type="operator" args="2">+</e>
+            <e type="operator" args="2">/</e>
+            <e type="operand">1</e>
+            <e type="operator" args="2">-</e>
+            <e type="operator" args="2">:</e>
+          </input>
+          <contract>
+            <e type="operand" style="unit">%</e>
+          </contract>
+          <result action="numeric">
+            <e type="operand">0.013</e>
+            <e type="operator" args="1">-</e>
+          </result>
+        </math>
+      </region>
+      <region left="0" top="1026" width="274" height="32" color="#000000" fontSize="10">
+        <math decimalPlaces="4">
+          <input>
+            <e type="operand">η</e>
+            <e type="operand">100</e>
+            <e type="operand" style="unit">%</e>
+            <e type="operator" args="2">*</e>
+            <e type="operand">1</e>
+            <e type="operand">Δη.RL</e>
+            <e type="operator" args="2">+</e>
+            <e type="operand">Δη.RC</e>
+            <e type="operator" args="2">+</e>
+            <e type="bracket">(</e>
+            <e type="operator" args="2">*</e>
+            <e type="operator" args="2">:</e>
+          </input>
+          <contract>
+            <e type="operand" style="unit">%</e>
+          </contract>
+          <result action="numeric">
+            <e type="operand">93.737</e>
+          </result>
+        </math>
+      </region>
+      <region top="1053" color="#000000">
+        <area terminator="true" />
+      </region>
+    </region>
+    <region left="126" top="1179" width="420" height="24" color="#000000" fontSize="10">
+      <text lang="eng">
+        <p fontName="Arial">Change everything to use ΔVariable, like what was done to efficiency</p>
+      </text>
+    </region>
+  </regions>
+</worksheet>

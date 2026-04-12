@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?application progid="SMath Studio Desktop" version="1.0.8151.26392"?>
+<worksheet xmlns="http://smath.info/schemas/worksheet/1.0">
+  <settings ppi="96">
+    <identity>
+      <id>bf910203-97df-46df-af7f-fdddd9240281</id>
+      <revision>5</revision>
+    </identity>
+    <calculation>
+      <precision>4</precision>
+      <exponentialThreshold>5</exponentialThreshold>
+      <trailingZeros>false</trailingZeros>
+      <significantDigitsMode>false</significantDigitsMode>
+      <roundingMode>0</roundingMode>
+      <fractions>decimal</fractions>
+    </calculation>
+    <pageModel active="false" viewMode="2" printGrid="false" printAreas="true" simpleEqualsOnly="false" printBackgroundImages="true">
+      <paper id="1" orientation="Portrait" width="850" height="1100" />
+      <margins left="39" right="39" top="49" bottom="49" />
+      <header alignment="Center" color="#a9a9a9">&amp;[DATE] &amp;[TIME] - &amp;[FILENAME]</header>
+      <footer alignment="Center" color="#a9a9a9">&amp;[PAGENUM] / &amp;[COUNT]</footer>
+      <backgrounds />
+    </pageModel>
+    <dependencies>
+      <assembly name="SMath Studio Desktop" version="1.0.8151.26392" guid="a37cba83-b69c-4c71-9992-55ff666763bd" />
+      <assembly name="MathRegion" version="1.11.8151.26392" guid="02f1ab51-215b-466e-a74d-5d8b1cf85e8d" />
+      <assembly name="TextRegion" version="1.11.8151.26392" guid="485d28c5-349a-48b6-93be-12a35a1c1e39" />
+    </dependencies>
+  </settings>
+  <regions type="content">
+    <region left="0" top="0" width="74" height="24" color="#000000" bgColor="#00ff00" fontSize="10">
+      <math decimalPlaces="3" significantDigitsMode="true" exponentialThreshold="6">
+        <input>
+          <e type="operand">F</e>
+          <e type="operand">3</e>
+          <e type="operand" style="unit">MHz</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region left="0" top="18" width="128" height="41" color="#000000" fontSize="10">
+      <math decimalPlaces="3" significantDigitsMode="true" exponentialThreshold="6">
+        <input>
+          <e type="operand">T</e>
+          <e type="operand">1</e>
+          <e type="operand">F</e>
+          <e type="operator" args="2">/</e>
+          <e type="operator" args="2">:</e>
+        </input>
+        <contract>
+          <e type="operand" style="unit">μs</e>
+        </contract>
+        <result action="numeric">
+          <e type="operand">0.333</e>
+        </result>
+      </math>
+    </region>
+    <region left="0" top="54" width="152" height="30" color="#000000" fontSize="10">
+      <math decimalPlaces="3" significantDigitsMode="true" exponentialThreshold="6">
+        <input>
+          <e type="operand">t.R</e>
+          <e type="operand">5</e>
+          <e type="operand" style="unit">%</e>
+          <e type="operator" args="2">*</e>
+          <e type="operand">T</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">:</e>
+        </input>
+        <contract>
+          <e type="operand" style="unit">ns</e>
+        </contract>
+        <result action="numeric">
+          <e type="operand">16.7</e>
+        </result>
+      </math>
+    </region>
+    <region left="162" top="54" width="295" height="23" color="#000000" fontSize="10">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p style="font-weight: bold;">Assuming a rise time of 5% of the frequency</p>
+        </content>
+      </text>
+    </region>
+    <region left="0" top="81" width="142" height="47" color="#000000" fontSize="10">
+      <math decimalPlaces="3" significantDigitsMode="true" exponentialThreshold="6">
+        <input>
+          <e type="operand">BW</e>
+          <e type="operand">0.35</e>
+          <e type="operand">t.R</e>
+          <e type="operator" args="2">/</e>
+          <e type="operator" args="2">:</e>
+        </input>
+        <contract>
+          <e type="operand" style="unit">MHz</e>
+        </contract>
+        <result action="numeric">
+          <e type="operand">21</e>
+        </result>
+      </math>
+    </region>
+    <region left="0" top="126" width="73" height="30" color="#000000" bgColor="#00ff00" fontSize="10">
+      <math decimalPlaces="3" significantDigitsMode="true" exponentialThreshold="6">
+        <input>
+          <e type="operand">V.f</e>
+          <e type="operand">60</e>
+          <e type="operand" style="unit">%</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region left="0" top="162" width="262" height="47" color="#000000" fontSize="10">
+      <math decimalPlaces="3" significantDigitsMode="true" exponentialThreshold="6">
+        <input>
+          <e type="operand">TEL.QuarterWaveLength</e>
+          <e type="operand" style="unit">c</e>
+          <e type="operand">V.f</e>
+          <e type="operator" args="2">*</e>
+          <e type="operand">4</e>
+          <e type="operand">BW</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">/</e>
+          <e type="operator" args="2">:</e>
+        </input>
+        <result action="numeric">
+          <e type="operand">2.14</e>
+          <e type="operand" style="unit">m</e>
+          <e type="operator" args="2">*</e>
+        </result>
+      </math>
+    </region>
+    <region left="279" top="189" width="121" height="30" color="#000000" bgColor="#00ff00" fontSize="10">
+      <math decimalPlaces="3" significantDigitsMode="true" exponentialThreshold="6">
+        <input>
+          <e type="operand">TEL.Target</e>
+          <e type="operand">1</e>
+          <e type="operand" style="unit">mm</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">:</e>
+        </input>
+      </math>
+    </region>
+    <region left="0" top="225" width="217" height="47" border="true" color="#000000" fontSize="10">
+      <math decimalPlaces="3" significantDigitsMode="true" exponentialThreshold="6">
+        <input>
+          <e type="operand">TEL.Simplified</e>
+          <e type="operand" style="unit">c</e>
+          <e type="operand">V.f</e>
+          <e type="operator" args="2">*</e>
+          <e type="operand">28</e>
+          <e type="operand">F</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">/</e>
+          <e type="operator" args="2">:</e>
+        </input>
+        <result action="numeric">
+          <e type="operand">2.14</e>
+          <e type="operand" style="unit">m</e>
+          <e type="operator" args="2">*</e>
+        </result>
+      </math>
+    </region>
+    <region left="279" top="225" width="226" height="53" border="true" color="#000000" fontSize="10">
+      <math decimalPlaces="3" significantDigitsMode="true" exponentialThreshold="6">
+        <input>
+          <e type="operand">F.Max</e>
+          <e type="operand" style="unit">c</e>
+          <e type="operand">V.f</e>
+          <e type="operator" args="2">*</e>
+          <e type="operand">28</e>
+          <e type="operand">TEL.Target</e>
+          <e type="operator" args="2">*</e>
+          <e type="operator" args="2">/</e>
+          <e type="operator" args="2">:</e>
+        </input>
+        <contract>
+          <e type="operand" style="unit">GHz</e>
+        </contract>
+        <result action="numeric">
+          <e type="operand">6.42</e>
+        </result>
+      </math>
+    </region>
+    <region left="0" top="297" width="218" height="53" color="#000000" fontSize="10">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p>Max distance this squarewave<br />frequency can go without requiring<br />termination</p>
+        </content>
+      </text>
+    </region>
+    <region left="279" top="297" width="210" height="53" color="#000000" fontSize="10">
+      <text lang="eng" fontFamily="Arial" fontSize="10">
+        <content>
+          <p>Maximum squarewave frequency<br />that can travel along a specified<br />length</p>
+        </content>
+      </text>
+    </region>
+  </regions>
+</worksheet>
